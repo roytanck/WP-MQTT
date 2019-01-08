@@ -2,8 +2,8 @@
 Contributors: roytanck
 Tags: MQTT, IoT, internet-of-things
 Requires at least: 4.4
-Tested up to: 4.7
-Stable tag: 0.9
+Tested up to: 5.0.2
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,10 @@ look into them.
 1. PW-MQTT's settings screen contains the broker settings, allows you to set up common events, or specify your own.
 
 == Changelog ==
+
+= 1.0 =
+2018-01-08
+Adds two filter hooks so developers can modify the subject and/or message.
 
 = 0.9 =
 Initial version.

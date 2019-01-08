@@ -3,7 +3,7 @@
 	Plugin Name: WP-MQTT
 	Plugin URI:  http://www.roytanck.com
 	Description: Send MQTT messages from WordPress
-	Version:     0.9
+	Version:     1.0
 	Author:      Roy Tanck
 	Author URI:  http://www.roytanck.com
 	Text Domain: wp-mqtt
@@ -156,8 +156,15 @@ if( !class_exists('WP_MQTT') ){
 		 * Send the MQTT message
 		 */
 		public function publish( $subject, $message ){
+			// apply filters to the subject
+			$subject = apply_filters( 'wp_mqtt_filter_subject', $subject, $message );
+			// apply filters to the message
+			$message = apply_filters( 'wp_mqtt_filter_message', $message, $subject );
+			// attempt to connect to the broker
 			$this->connect();
+			// check if the connection was made
 			if( $this->connected ){
+				// publish the message
 				$this->mqtt->publish( $subject, $message, $this->settings['broker_qos'] );
 			}			
 		}
